@@ -1,20 +1,35 @@
 $(document).ready(function(){
 
 let apiKey =  "6a1d59ab48bf4b02954a7a00b708601f";
+var queryURL = "" ;
 let searchTerm = "";
-let numOfResults = 5;
-let startDate = "00000000"; //Format: YYYYMMDD
-let endDate = "00000000"; //Format: YYYYMMDD
+let numOfRecords = 5;
+let startDate = ""; 
+let endDate = ""; 
 
 $("#btn-search").on('click', function(event){
   event.preventDefault();
 
-	searchTerm = $('#search').val().trim();
-	numOfRecords = $('#count').val() ? $('#count').val().trim() : numOfResults;
-	startDate = $("#start").val().trim() + "19900101";
-	endDate = $("#end").val().trim() + "20160101";
+  queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" +
+    apiKey; 
 
-  doQuerySearch(searchTerm, numOfResults, startDate, endDate);
+	searchTerm = $('#search').val().trim();
+  queryURL += "&q=" + searchTerm;
+
+	numOfRecords = $('#count').val() ? $('#count').val().trim() : numOfRecords;
+
+	startDate = $("#start").val().trim();
+	endDate =  $("#end").val().trim();
+
+  if(startDate != "" && startDate != undefined && startDate != null ){
+    queryURL += "&begin_date=" + startDate + "0101";
+  }
+
+  if(endDate != "" && endDate != undefined && endDate != null ){
+    queryURL += "&end_date=" + endDate + "0101";
+  }
+
+  doQuerySearch(queryURL);
 
 });
 
@@ -23,27 +38,22 @@ $('#btn-clear').on('click', function(){
 });
 
 
-function doQuerySearch(searchTerm, numOfResults, startDate, endDate){
-
-	var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" +
-  	apiKey + "&q=" + searchTerm 
-    + "&begin_date=" + startDate + "&end_date=" + endDate;
+function doQuerySearch(queryURL){
 
 	console.log("queryURL", queryURL);
 
   $.ajax({
     url: queryURL,
-    method: 'GET',
+    method: 'GET'
   }).done(function(NYTresponse) {
-    
+
     console.log(NYTresponse);
 
     displayResults(NYTresponse);
 
   }).fail(function(err) {
     throw err;
-    });
-
+  });
 }
 
 
@@ -52,7 +62,7 @@ function displayResults(NYTresponse){
 
   let resultsDiv = "";
 
-  for(let index = 0; index < numOfResults; index++){
+  for(let index = 0; index < numOfRecords; index++){
 
   	  var divSection = $("<div>");
       divSection.addClass("article");
