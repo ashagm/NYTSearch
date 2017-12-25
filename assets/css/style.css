@@ -1,0 +1,46 @@
+body{
+	font-family: 'Alegreya Sans', sans-serif;
+	width: 978px;
+	margin: 0 auto;
+}
+
+
+.jumbotron{
+	background-color: #273f87;
+	color: #fff;
+	height: 20px;
+	font-size: 16px;
+
+}
+
+section{
+	margin: 20px 0px;
+	padding: 0px 5px;
+}
+
+section .card{
+	border: 1px solid #273f87;
+}
+
+section .card-header{
+	padding: 10px;
+	background-color: #273f87;
+	color: #fff;
+	font-size: 20px;
+}
+
+section .buttons {
+    padding: 0px 10px;
+    margin: 5px;
+}
+
+.search-body,
+.result-body{
+	margin: 0px 10px;
+}
+
+.search-body label{
+	font-weight: bold;
+}
+
+

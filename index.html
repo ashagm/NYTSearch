@@ -8,10 +8,66 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 	<!-- font awesome -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- Google fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Alegreya+Sans" rel="stylesheet">
 	<!-- Custom stylesheet -->
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 <body>
+
+<header>
+	<div class="jumbotron text-center">
+	  <div class="container">
+	    <h1><i class="fa fa-newspaper-o" aria-hidden="true"></i>
+	    NEW YORK TIMES SEARCH</h1>
+	  </div>
+	</div>
+</header>
+
+<section>
+	<div class="card">
+	  <h4 class="card-header"> 
+	  	<i class="fa fa-tasks" aria-hidden="true"></i> Search Parameters</h4>
+		<div class="card-body search-body">
+			<div class="form-group">
+		    <label class="col-form-label" for="search">Search Term :</label>
+		    <input type="text" class="form-control" id="search" placeholder="Example input">
+			</div>
+		<div class="form-group">
+			<label class="col-form-label" for="count">Num of records to retrieve :</label>
+			<input type="text" class="form-control" id="count" placeholder="">
+		</div>
+		<div class="form-group">
+			<label class="col-form-label" for="start">Start Year (Optional) :
+			</label>
+			<input type="text" class="form-control" id="start" placeholder="">
+		</div>
+		<div class="form-group">
+			<label class="col-form-label" for="end">End Year (Optional) :
+			</label>
+			<input type="text" class="form-control" id="end" placeholder="">
+		</div>
+		</div>
+		<div class="buttons">	
+		    <button class= "btn btn-primary" id="btn-search">Search</button>
+		    <button class= "btn btn-default" id="btn-clear">Clear Results</button>
+		</div>
+	</div>
+</section>
+
+<section>
+	<div class="card">
+		<h4 class="card-header">
+		<i class="fa fa-tasks" aria-hidden="true"></i> Top Articles</h4>
+		<div class="card-body result-body">
+			Search results go here
+		</div>
+	</div>
+
+</section>
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 	<script src="assets/js/app.js"></script>
 </body>
